@@ -1,6 +1,8 @@
 # BLOG
 For testing user can start the authentication from /api/authenticate
 Test account to be used 
+
+
 username: test1
 passowrd: teast@123
 
