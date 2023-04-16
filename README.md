@@ -79,14 +79,19 @@ If there is an error, the API will return an error response in the following for
         "message": "ERROR_MESSAGE"
     }
 }
-
+````
 The following are the error codes and their respective error messages:
 
-BAD_REQUEST: The request is malformed or missing required parameters.
-UNAUTHORIZED: The user is not authenticated or the JWT token is invalid.
-FORBIDDEN: The user is not authorized to perform the action.
-NOT_FOUND: The requested resource is not found.
-INTERNAL_SERVER_ERROR: An unexpected error occurred on the server.
+# BAD_REQUEST:
+The request is malformed or missing required parameters.
+# UNAUTHORIZED:
+The user is not authenticated or the JWT token is invalid.
+# FORBIDDEN: 
+The user is not authorized to perform the action.
+# NOT_FOUND: 
+The requested resource is not found.
+# INTERNAL_SERVER_ERROR:
+An unexpected error occurred on the server.
 
 
 ### Running the Server
