@@ -18,22 +18,22 @@ import { expressjwt } from 'express-jwt'
 
 
 dotenv.config();
-// const checkJwt = auth({
-//   audience: 'https://auth0-demo.com/api/v2/',
-//   issuerBaseURL: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/',
-//   tokenSigningAlg: 'RS256'
-// });
-const checkJwt = expressjwt({
-  secret: jwks.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/.well-known/jwks.json'
-  }),
-  aud: 'https://auth0-demo.com/api/v2/',
-  issuer: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/',
-  algorithms: ['RS256']
-})
+const checkJwt = auth({
+  audience: 'https://auth0-demo.com/api/v2/',
+  issuerBaseURL: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/',
+  tokenSigningAlg: 'RS256'
+});
+// const checkJwt = expressjwt({
+//   secret: jwks.expressJwtSecret({
+//     cache: true,
+//     rateLimit: true,
+//     jwksRequestsPerMinute: 5,
+//     jwksUri: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/.well-known/jwks.json'
+//   }),
+//   aud: 'https://auth0-demo.com/api/v2/',
+//   issuer: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/',
+//   algorithms: ['RS256']
+// })
 
 const cors_config = {
   origin: ['http://127.0.0.1:5173', 'http://localhost:3000', 'http://127.0.0.1:3000', 'https://saasden.club'],
