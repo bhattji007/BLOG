@@ -1,6 +1,7 @@
 import express from 'express';
 import userSchema from '../models/userModel.js';
 import jwt from 'jsonwebtoken';
+import {auth} from 'express-oauth2-jwt-bearer'
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -28,4 +29,9 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-export default  verifyToken;
+const checkJwt = auth({
+  audience: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/api/v2/',
+  issuerBaseURL: `https://dev-yipr7szg0njkh7iw.us.auth0.com/`,
+});
+
+export default  checkJwt;

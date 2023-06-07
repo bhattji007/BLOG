@@ -60,9 +60,9 @@ router.get('/:id',async (req,res)=>{
         if(!post){
             return res.status(403).json({ message: 'no such post' });
         }
-        if (post.username!=req.user.username){
-            return res.status(403).json({ message: 'cannot access someone else post' });
-        }
+        // if (post.username!=req.user.username){
+        //     return res.status(403).json({ message: 'cannot access someone else post' });
+        // }
         const obj={
             likes:post.likes,
             comments:post.comments
