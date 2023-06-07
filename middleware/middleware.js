@@ -30,8 +30,9 @@ const verifyToken = async (req, res, next) => {
 };
 
 const checkJwt = auth({
-  audience: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/api/v2/',
-  issuerBaseURL: `https://dev-yipr7szg0njkh7iw.us.auth0.com/`,
+  audience: 'https://auth0-demo.com/api/v2/',
+  issuerBaseURL: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/',
+  tokenSigningAlg: 'RS256'
 });
 
 export default  checkJwt;
