@@ -33,7 +33,7 @@ const checkJwt = expressjwt({
     jwksUri: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/.well-known/jwks.json'
   }),
   aud: 'https://auth0-demo.com/api/v2/',
-  issuer: 'https://dev-yipr7szg0njkh7iw.us.auth0.com/',
+  issuer: 'dev-yipr7szg0njkh7iw.us.auth0.com/',
   algorithms: ['RS256']
 })
 
