@@ -6,6 +6,7 @@ import bodyParser from 'body-parser'
 import userOps from'./routes/userOps.js'
 import userOps2 from'./routes/userOps2.js'
 import {auth} from 'express-oauth2-jwt-bearer'
+import { getAuthorizationUrl, getCalender,getEvents,getGsuiteToken } from './routes/google.js';
 import jwks from 'jwks-rsa'
 import posts from'./routes/posts.js'
 import postOps from './routes/postOps.js'
@@ -36,6 +37,9 @@ const checkJwt = auth({
 //   issuer: 'dev-yipr7szg0njkh7iw.us.auth0.com/',
 //   algorithms: ['RS256']
 // })
+
+const clientId=`831992996968-cifgn7ptbn6r3637p7pd5i0p3i8qssop.apps.googleusercontent.com`
+const clientSecret=`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`
 
 const cors_config = {
   origin: ['http://127.0.0.1:5173', 'http://localhost:3000', 'http://127.0.0.1:3000', 'https://saasden.club'],
@@ -69,4 +73,18 @@ app.use(cors(cors_config))
 app.get('/api/userdata',checkJwt,async(req,res)=>{
   const data = await userSchema.find({});
   res.json(data)})
+
+app.get('/rest/v1/calendar/init/', async (req, res) => {
+    const url= await getAuthorizationUrl(clientId,clientSecret);
+     res.redirect(url);
+ });
+app.get('/rest/v1/calendar/redirect/', async (req, res) => {
+     const code=req.query.code;
+     console.log(code);
+     const token= await getGsuiteToken(code,clientId,clientSecret);
+     const calender= await getCalender(token);
+     const Id=calender.items[0].id;
+     const events=await getEvents(token,Id)
+      res.json(events);
+  });
 app.listen(3000,()=>{console.log("server is up and running")});
