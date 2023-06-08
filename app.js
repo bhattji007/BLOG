@@ -74,11 +74,11 @@ app.get('/api/userdata',checkJwt,async(req,res)=>{
   const data = await userSchema.find({});
   res.json(data)})
 
-app.get('/rest/v1/calendar/init/', async (req, res) => {
+app.get('/rest/v1/calendar/init/',checkJwt, async (req, res) => {
     const url= await getAuthorizationUrl(clientId,clientSecret);
      res.redirect(url);
  });
-app.get('/rest/v1/calendar/redirect/', async (req, res) => {
+app.get('/rest/v1/calendar/redirect/',checkJwt, async (req, res) => {
      const code=req.query.code;
      console.log(code);
      const token= await getGsuiteToken(code,clientId,clientSecret);
