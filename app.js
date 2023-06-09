@@ -42,7 +42,7 @@ const clientId=`831992996968-cifgn7ptbn6r3637p7pd5i0p3i8qssop.apps.googleusercon
 const clientSecret=`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`
 
 const cors_config = {
-  origin: ['http://127.0.0.1:5173', 'http://localhost:3000', 'http://127.0.0.1:3000', 'https://saasden.club'],
+  origin: ['http://127.0.0.1:5173', 'http://localhost:3000', 'http://127.0.0.1:3000', 'https://saasden.club','https://auth0-demo-six.vercel.app/','https://blog-fe0k.onrender.com'],
   methods: ['GET', 'POST', 'DELETE'],
   credentials: true
 }
