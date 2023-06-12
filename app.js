@@ -76,7 +76,7 @@ app.get('/api/userdata',checkJwt,async(req,res)=>{
 
 app.get('/rest/v1/calendar/init/',checkJwt, async (req, res) => {
     const url= await getAuthorizationUrl(clientId,clientSecret);
-     res.redirect(url);
+     res.send(url);
  });
 app.get('/rest/v1/calendar/redirect/',checkJwt, async (req, res) => {
      const code=req.query.code;
@@ -85,6 +85,7 @@ app.get('/rest/v1/calendar/redirect/',checkJwt, async (req, res) => {
      const calender= await getCalender(token);
      const Id=calender.items[0].id;
      const events=await getEvents(token,Id)
+     console.log(events);
       res.json(events);
   });
 app.listen(3000,()=>{console.log("server is up and running")});
